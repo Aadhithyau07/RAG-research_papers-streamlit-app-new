@@ -4,7 +4,7 @@ client = chromadb.PersistentClient(
     path="./my_chromadb"
 )
 
-collection = client.get_collection(
+collection = client.get_or_create_collection(
     name="research_papers"
 )
 
