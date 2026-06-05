@@ -1,5 +1,2 @@
-streamlit
-protobuf==4.25.3
-opentelemetry-api==1.24.0
-opentelemetry-sdk==1.24.0streamlit 
+streamlit 
 chromadb 
