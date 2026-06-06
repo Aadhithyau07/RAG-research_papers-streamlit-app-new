@@ -1,9 +1,9 @@
-from ollama import chat
+from ollama import chat #LLM to generate answers(gen AI , here for text).
 
 def generate_answer(prompt):
 
     response = chat(
-        model="qwen3:8b",
+        model="qwen3:8b",#This is the particular module that I'm using inside ollama
         messages=[
             {
                 "role": "user",

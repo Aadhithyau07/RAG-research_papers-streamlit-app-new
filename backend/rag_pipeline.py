@@ -13,7 +13,7 @@ followup_starters = [
 ]
 
 
-def is_followup(question, chat_history):
+def is_followup(question, chat_history):#used above list to identify if or whether it's a followup question or not
 
     if not chat_history:
         return False
@@ -31,7 +31,9 @@ def ask_new_question(question):
 
     result = retrieve_documents(
     question,
-    n_results=20)
+    n_results=20) #I have run with multiple n_results but this
+    # particular gives best fit as the rest/old things could'nt possibly get the output of who is author of Attention is All you Need
+    #as we are using ollama and not very intelligent models like google gemini or so.
 
 
     documents = result["documents"][0]
@@ -47,7 +49,7 @@ def ask_new_question(question):
     best_distance = result["distances"][0][0]
 
 # TEMP THRESHOLD
-    if best_distance > 1.0:
+    if best_distance > 1.0: #this has been to identify new chats as ollama unlike google gemini models are unable to follow the prompt correctly
         return (
             "I couldn't find relevant information about this in the provided research papers.",
             [])
@@ -71,7 +73,7 @@ def ask_new_question(question):
 
     answer = generate_answer(prompt)
 
-    sources = set()
+    sources = set()#To eradicate the duplicate values.
 
     for meta in result["metadatas"][0]:
         if "source" in meta:
@@ -107,4 +109,4 @@ def ask_followup(question, chat_history):
 
     answer = generate_answer(prompt)
 
-    return answer
+    return answer  
